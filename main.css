@@ -125,7 +125,7 @@ header .navbar ul{
 header .navbar ul li a{
     display: block;
     padding:1rem;
-    margin:1.5rem 0;
+    margin:0.5rem 0;
     background:#333;
     color:#fff;
     font-size: 2rem;
@@ -227,6 +227,14 @@ header .navbar ul li a:hover{
     color:#fff;
 }
 
+.tool-icon img {
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 6%;
+    height: 6%;
+    float: left;
+}
+
 .education .box-container{
     display: flex;
     align-items: center;
@@ -236,9 +244,22 @@ header .navbar ul li a:hover{
     padding-left: 3rem;
 }
 
+.education .tech-tool h3 {
+    font-size: 2rem;
+    color:var(--yellow);
+    padding:1rem 0;
+    font-weight: normal;
+}
+
+.education .tech-tool span {
+    color:#eee;
+    padding:0 .5rem;
+}
+
 .education .box-container .box{
     width:27rem;
     margin:4rem 1rem;
+    margin-top: 4%;
     padding-left: 4rem;
     border-left: .2rem solid #fff;
     position: relative;
@@ -266,7 +287,7 @@ header .navbar ul li a:hover{
 
 .education .box-container .box i{
     position: absolute;
-    top:-1.5rem; left:-2.5rem;
+    top:-2rem; left:-2.5rem;
     height:5rem;
     width: 5rem;
     border-radius: 50%;
@@ -292,6 +313,11 @@ header .navbar ul li a:hover{
     margin:2rem;
     overflow: hidden;
     cursor: pointer;
+}
+
+.portfolio .box-container .box h3 {
+    position: absolute;
+    transform: translate(-50%, -50%);
 }
 
 .portfolio .box-container .box img{
