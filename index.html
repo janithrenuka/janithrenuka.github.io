@@ -699,6 +699,176 @@
     }
     .project-link:hover { gap: 0.65rem; }
 
+    /* Gallery modal */
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .gallery-modal.active {
+      display: flex;
+    }
+    .gallery-content {
+      background: var(--card);
+      border: 1px solid var(--border);
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+    .gallery-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+      background: none;
+      border: none;
+      transition: color 0.2s;
+    }
+    .gallery-close:hover {
+      color: var(--accent-red);
+    }
+    .gallery-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
+      color: var(--text);
+    }
+    .gallery-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .gallery-img:hover {
+      transform: scale(1.02);
+      border-color: var(--accent-red);
+    }
+    .no-images {
+      color: var(--muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Gallery icon on project card */
+    .project-gallery-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: rgba(46,255,195,0.15);
+      border: 1px solid rgba(46,255,195,0.4);
+      color: var(--accent-cyan);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1rem;
+    }
+    .project-gallery-icon:hover {
+      background: rgba(46,255,195,0.3);
+      border-color: var(--accent-cyan);
+    }
+
+    /* Full image preview modal */
+    .image-preview-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 400;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .image-preview-modal.active {
+      display: flex;
+    }
+    .preview-container {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid var(--border);
+    }
+    .preview-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text);
+      background: none;
+      border: none;
+      transition: color 0.2s;
+      z-index: 401;
+    }
+    .preview-close:hover {
+      color: var(--accent-red);
+    }
+    .preview-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s;
+      z-index: 401;
+    }
+    .preview-nav:hover {
+      background: rgba(0, 0, 0, 0.8);
+      color: var(--accent-cyan);
+    }
+    .preview-prev { left: 1rem; }
+    .preview-next { right: 1rem; }
+    .preview-counter {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
 
     /* ─────────────────────────────────────────
        CONTACT SECTION  (full-width bg)
@@ -1218,7 +1388,10 @@
             <span class="tech-tag">CSS</span>
             <span class="tech-tag">MySQL</span>
           </div>
-          <a href="https://github.com/janithrenuka/IMS_system" target="_blank" class="project-link">View Repo &#x2192;</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/janithrenuka/IMS_system" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('IM System')">🖼️</span>
+          </div>
         </div>
 
         <div class="project-card reveal">
@@ -1235,7 +1408,10 @@
             <span class="tech-tag">Node.js</span>
             <span class="tech-tag">Flutter</span>
           </div>
-          <a href="https://github.com/Group-29-3rd-Year" target="_blank" class="project-link">View Repo &#x2192;</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/Group-29-3rd-Year" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('Smart Ride')">🖼️</span>
+          </div>
         </div>
 
         <div class="project-card reveal">
@@ -1249,7 +1425,10 @@
             <span class="tech-tag">Flutter</span>
             <span class="tech-tag">Dart</span>
           </div>
-          <a href="https://github.com/janithrenuka/decathlon" target="_blank" class="project-link">View Repo &#x2192;</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/janithrenuka/decathlon" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('Decathlon UI')">🖼️</span>
+          </div>
         </div>
 
         <div class="project-card reveal">
@@ -1263,7 +1442,10 @@
             <span class="tech-tag">Flutter</span>
             <span class="tech-tag">Dart</span>
           </div>
-          <a href="https://github.com/janithrenuka/exercise_app" target="_blank" class="project-link">View Repo &#x2192;</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/janithrenuka/exercise_app" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('Workout App')">🖼️</span>
+          </div>
         </div>
 
         <div class="project-card reveal">
@@ -1277,7 +1459,27 @@
             <span class="tech-tag">Unity</span>
             <span class="tech-tag">C#</span>
           </div>
-          <a href="https://github.com/janithrenuka/Brick-bounce-unity-2D" target="_blank" class="project-link">View Repo &#x2192;</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/janithrenuka/Brick-bounce-unity-2D" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('Brick Bounce')">🖼️</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <p class="project-type">Individual · Self Learning</p>
+          <h3 class="project-name">Book Manager</h3>
+          <p class="project-desc">
+            A Flutter app for managing book lists when visiting bookshops or book fairs. Create, organize,
+            and track books with prices. Perfect for collectors and book enthusiasts to manage purchases.
+          </p>
+          <div class="tag-row" style="margin-bottom: 1.1rem;">
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Dart</span>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <a href="https://github.com/janithrenuka/book_list" target="_blank" class="project-link">View Repo &#x2192;</a>
+            <span class="project-gallery-icon" onclick="openGallery('Book Manager')">🖼️</span>
+          </div>
         </div>
 
       </div>
@@ -1398,6 +1600,30 @@
 
 
   <!-- ============================================================
+       GALLERY MODAL
+       ============================================================ -->
+  <div id="galleryModal" class="gallery-modal">
+    <div class="gallery-content">
+      <button class="gallery-close" onclick="closeGallery()">✕</button>
+      <h3 class="gallery-title" id="galleryTitle">Project Gallery</h3>
+      <div id="galleryImages" class="gallery-images"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FULL IMAGE PREVIEW MODAL
+       ============================================================ -->
+  <div id="imagePreviewModal" class="image-preview-modal">
+    <button class="preview-close" onclick="closeImagePreview()">✕</button>
+    <div class="preview-container">
+      <img id="previewImg" class="preview-img" src="" alt="Preview" />
+      <button class="preview-nav preview-prev" onclick="previousImage()" style="display:none;" id="prevBtn">&#10094;</button>
+      <button class="preview-nav preview-next" onclick="nextImage()" style="display:none;" id="nextBtn">&#10095;</button>
+      <div class="preview-counter" style="display:none;" id="counterDiv"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
        FOOTER
        ============================================================ -->
   <footer>
@@ -1472,6 +1698,141 @@
 
     revealEls.forEach(function (el) {
       revealObserver.observe(el);
+    });
+
+    /* ── 4. Project Gallery Management ─────────────────────────
+       Define images for each project and manage gallery modal     */
+
+    var projectGalleries = {
+      'IM System': [
+        'image/ims_system.png'
+      ],
+      'Smart Ride': [],
+      'Decathlon UI': [
+        'image/decathlon/1.png',
+        'image/decathlon/2.png',
+        'image/decathlon/3.png',
+        'image/decathlon/4.png',
+        'image/decathlon/5.png',
+        'image/decathlon/6.png',
+      ],
+      'Workout App': [
+        'image/workout/1.png',
+        'image/workout/2.png',
+        'image/workout/3.png',
+        'image/workout/4.png',
+        'image/workout/5.png',
+      ],
+      'Brick Bounce': [],
+      'Book Manager': []  /* No images yet */
+    };
+
+    function openGallery(projectName) {
+      var modal = document.getElementById('galleryModal');
+      var title = document.getElementById('galleryTitle');
+      var imagesContainer = document.getElementById('galleryImages');
+      
+      title.textContent = projectName + ' — Gallery';
+      var images = projectGalleries[projectName] || [];
+      
+      if (images.length === 0) {
+        imagesContainer.innerHTML = '<p class="no-images">No images available for this project yet.</p>';
+      } else {
+        imagesContainer.innerHTML = images.map(function(src) {
+          return '<img src="' + src + '" class="gallery-img" alt="' + projectName + '">';
+        }).join('');
+        attachGalleryImageListeners();
+      }
+      
+      modal.classList.add('active');
+    }
+
+    function closeGallery() {
+      var modal = document.getElementById('galleryModal');
+      modal.classList.remove('active');
+    }
+
+    /* Close modal when clicking outside content */
+    document.getElementById('galleryModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeGallery();
+      }
+    });
+
+    /* ── 5. Full Image Preview ─────────────────────────────────
+       Open large preview when clicking a gallery image          */
+
+    var currentPreviewIndex = 0;
+    var currentPreviewImages = [];
+
+    function attachGalleryImageListeners() {
+      var galleryImages = document.querySelectorAll('.gallery-img');
+      galleryImages.forEach(function(img, index) {
+        img.addEventListener('click', function() {
+          currentPreviewIndex = index;
+          currentPreviewImages = Array.from(galleryImages).map(function(i) { return i.src; });
+          openImagePreview(img.src);
+        });
+      });
+    }
+
+    function openImagePreview(imageSrc) {
+      var modal = document.getElementById('imagePreviewModal');
+      var img = document.getElementById('previewImg');
+      var prevBtn = document.getElementById('prevBtn');
+      var nextBtn = document.getElementById('nextBtn');
+      var counterDiv = document.getElementById('counterDiv');
+      
+      img.src = imageSrc;
+      modal.classList.add('active');
+      
+      /* Show navigation only if multiple images */
+      if (currentPreviewImages.length > 1) {
+        prevBtn.style.display = currentPreviewIndex === 0 ? 'none' : 'block';
+        nextBtn.style.display = currentPreviewIndex === currentPreviewImages.length - 1 ? 'none' : 'block';
+        counterDiv.style.display = 'block';
+        counterDiv.textContent = (currentPreviewIndex + 1) + ' / ' + currentPreviewImages.length;
+      } else {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        counterDiv.style.display = 'none';
+      }
+    }
+
+    function closeImagePreview() {
+      var modal = document.getElementById('imagePreviewModal');
+      modal.classList.remove('active');
+    }
+
+    function previousImage() {
+      if (currentPreviewIndex > 0) {
+        currentPreviewIndex--;
+        openImagePreview(currentPreviewImages[currentPreviewIndex]);
+      }
+    }
+
+    function nextImage() {
+      if (currentPreviewIndex < currentPreviewImages.length - 1) {
+        currentPreviewIndex++;
+        openImagePreview(currentPreviewImages[currentPreviewIndex]);
+      }
+    }
+
+    /* Close preview modal when clicking outside */
+    document.getElementById('imagePreviewModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeImagePreview();
+      }
+    });
+
+    /* Keyboard navigation for preview */
+    document.addEventListener('keydown', function(e) {
+      var modal = document.getElementById('imagePreviewModal');
+      if (modal.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') previousImage();
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'Escape') closeImagePreview();
+      }
     });
 
   </script>
