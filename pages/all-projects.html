@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Janith Karunathilaka — Senior Software Engineer</title>
-  <link rel="icon" href="image/janith_renuka.png" type="image/x-icon" />
+  <link rel="icon" href="../image/janith_renuka.png" type="image/x-icon" />
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -195,6 +195,61 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ─────────────────────────────────────────
+       FILTERS
+    ───────────────────────────────────────── */
+    .filters-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-right: 0.5rem;
+      min-width: 140px;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.4rem 1.1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    .filter-btn.active {
+      background: rgba(46, 255, 195, 0.1);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Hidden state for filtered items */
+    .project-card.filtered-out {
+      display: none;
     }
 
 
@@ -777,6 +832,7 @@
       position: relative;
       overflow: hidden;
       transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -994,6 +1050,25 @@
 
     .preview-close:hover {
       color: var(--accent-red);
+    }
+
+    /* Project Preview Modal Specifics */
+    .preview-modal-content {
+      max-width: 600px;
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .modal-desc {
+      font-size: 1rem;
+      color: #b2b2c2;
+      line-height: 1.8;
+      margin-bottom: 2rem;
     }
 
     .preview-nav {
@@ -1301,7 +1376,7 @@
   <nav id="navbar">
 
     <!-- Change "JR" to your initials -->
-    <a href="index.html" class="nav-logo">JR<span>.</span></a>
+    <a href="../index.html#hero" class="nav-logo">JR<span>.</span></a>
 
     <!-- Hamburger icon (visible on mobile only) -->
     <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
@@ -1312,11 +1387,11 @@
 
     <!-- Add or remove <li> items to change nav links -->
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#education">Education</a></li>
-      <li><a href="index.html#projects">Projects</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#education">Education</a></li>
+      <li><a href="#projects" class="active">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
 
   </nav>
@@ -1334,130 +1409,35 @@
         <div class="section-line"></div>
       </div>
 
-      <div class="projects-grid">
-
-        <!--
-          HOW TO ADD A PROJECT:
-          Copy one .project-card block, paste it here, and edit:
-            - .project-type  → "Group Project" or "Individual · Self Learning"
-            - .project-name  → project title
-            - .project-desc  → short description
-            - .tech-tag      → tech stack pills
-            - .project-link  → href to GitHub repo
-        -->
-
-        <div class="project-card reveal">
-          <p class="project-type">Group Project</p>
-          <h3 class="project-name">IM System</h3>
-          <p class="project-desc">
-            Information &amp; management system replacing the manual workflow in the Academic &amp;
-            Publication Division of UCSC. Full-featured web platform improving operational efficiency.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">MySQL</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/janithrenuka/IMS_system" target="_blank" class="project-link">View Repo
-              &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('IM System')">🖼️</span>
-          </div>
+      <!-- Project Filters -->
+      <div class="filters-container reveal">
+        <div class="filter-group" id="filter-type">
+          <span class="filter-label">Project Type</span>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="group">Group</button>
+          <button class="filter-btn" data-filter="individual">Individual</button>
+          <button class="filter-btn" data-filter="research">Research</button>
         </div>
-
-        <div class="project-card reveal">
-          <p class="project-type">Group Project</p>
-          <h3 class="project-name">Smart Ride</h3>
-          <p class="project-desc">
-            Google Maps API-based bus ticketing system with web and mobile apps, simplifying
-            public transport ticketing and providing real-time tracking for commuters.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">Express</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Flutter</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/Group-29-3rd-Year" target="_blank" class="project-link">View Repo &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('Smart Ride')">🖼️</span>
-          </div>
+        <div class="filter-group" id="filter-app">
+          <span class="filter-label">Application Type</span>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="mobile">Mobile</button>
+          <button class="filter-btn" data-filter="desktop">Desktop</button>
+          <button class="filter-btn" data-filter="research-paper">Research Paper</button>
         </div>
+      </div>
 
-        <div class="project-card reveal">
-          <p class="project-type">Individual · Self Learning</p>
-          <h3 class="project-name">Decathlon UI</h3>
-          <p class="project-desc">
-            A polished Flutter UI for an online sports item shop, exploring modern mobile design
-            patterns and e-commerce UX principles through self-driven learning.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">Flutter</span>
-            <span class="tech-tag">Dart</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/janithrenuka/decathlon" target="_blank" class="project-link">View Repo
-              &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('Decathlon UI')">🖼️</span>
-          </div>
-        </div>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Projects will be loaded dynamically from projects.json -->
+        <div class="no-images">Loading projects...</div>
+      </div>
 
-        <div class="project-card reveal">
-          <p class="project-type">Individual · Self Learning</p>
-          <h3 class="project-name">Workout App</h3>
-          <p class="project-desc">
-            Daily workout and health schedule tracker built with Flutter. Clean interface for managing
-            personal fitness routines and monitoring health goals day-to-day.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">Flutter</span>
-            <span class="tech-tag">Dart</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/janithrenuka/exercise_app" target="_blank" class="project-link">View Repo
-              &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('Workout App')">🖼️</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <p class="project-type">Individual · Self Learning</p>
-          <h3 class="project-name">Brick Bounce</h3>
-          <p class="project-desc">
-            A classic 2D arcade game built from scratch in Unity. Explores game physics, collision
-            detection, and interactive mechanics using C# scripting.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">Unity</span>
-            <span class="tech-tag">C#</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/janithrenuka/Brick-bounce-unity-2D" target="_blank" class="project-link">View
-              Repo &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('Brick Bounce')">🖼️</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <p class="project-type">Individual · Self Learning</p>
-          <h3 class="project-name">Book Manager</h3>
-          <p class="project-desc">
-            A Flutter app for managing book lists when visiting bookshops or book fairs. Create, organize,
-            and track books with prices. Perfect for collectors and book enthusiasts to manage purchases.
-          </p>
-          <div class="tag-row" style="margin-bottom: 1.1rem;">
-            <span class="tech-tag">Flutter</span>
-            <span class="tech-tag">Dart</span>
-          </div>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="https://github.com/janithrenuka/book_list" target="_blank" class="project-link">View Repo
-              &#x2192;</a>
-            <span class="project-gallery-icon" onclick="openGallery('Book Manager')">🖼️</span>
-          </div>
-        </div>
-
+      <!-- Back to Home Button -->
+      <div class="reveal" style="display: flex; justify-content: center; margin-top: 4rem;">
+        <a href="../index.html" class="btn-outline" style="display: inline-flex; align-items: center; gap: 0.6rem;">
+          <span>&#x2190;</span> Back to Home
+        </a>
       </div>
 
     </div>
@@ -1549,7 +1529,7 @@
           </div>
 
           <!-- CV Download link -->
-          <a href="resume/Janith_Karunathilaka.pdf" target="_blank" class="contact-item">
+          <a href="../resume/Janith_Karunathilaka.pdf" target="_blank" class="contact-item">
             <span class="contact-icon">📄</span>
             <div>
               <p class="contact-label">Curriculum Vitae</p>
@@ -1610,6 +1590,25 @@
     </div>
   </div>
 
+  <!-- ============================================================
+       PROJECT PREVIEW MODAL
+       ============================================================ -->
+  <div id="projectPreviewModal" class="gallery-modal">
+    <div class="gallery-content preview-modal-content">
+      <button class="gallery-close" onclick="closeProjectPreview()">✕</button>
+      <p id="previewType" class="project-type" style="margin-top: 0.5rem;"></p>
+      <h3 id="previewName" class="gallery-title" style="margin-bottom: 0.8rem;">Project Title</h3>
+      <div id="previewTags" class="modal-tags"></div>
+      <p id="previewDesc" class="modal-desc">Project description goes here...</p>
+      <div id="previewFooter"
+        style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); margin-top: 1rem; padding-top: 1.5rem;">
+        <a id="previewLink" href="#" target="_blank" class="project-link">View Repository &#x2192;</a>
+        <button class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;"
+          onclick="closeProjectPreview()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <button id="scrollTopBtn" title="Go to top">↑</button>
 
   <!-- ============================================================
@@ -1626,42 +1625,35 @@
   </footer>
 
 
-  <!-- ============================================================
-       JAVASCRIPT  — only 3 simple functions
-       ============================================================ -->
+  <script src="../js/projects-loader.js"></script>
   <script>
-
-    /* ── 1. Mobile hamburger menu ───────────────────────────────
-       Toggles the .open class on the nav list to show/hide it   */
-
+    /* ── 1. Mobile hamburger menu ─────────────────────────────── */
     var hamburger = document.getElementById('hamburger');
     var navLinks = document.getElementById('nav-links');
 
-    hamburger.addEventListener('click', function () {
-      navLinks.classList.toggle('open');
-    });
-
-    /* Close menu when any nav link is clicked */
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        navLinks.classList.remove('open');
+    if (hamburger) {
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('open');
       });
-    });
+    }
 
+    if (navLinks) {
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+        });
+      });
+    }
 
-    /* ── 2. Active nav link highlight on scroll ─────────────────
-       Adds .active to the link whose section is in view          */
-
+    /* ── 2. Active nav link highlight on scroll ───────────────── */
     var sections = document.querySelectorAll('section[id]');
     var links = document.querySelectorAll('.nav-links a');
 
     window.addEventListener('scroll', function () {
-      var scrollPos = window.scrollY + 140;   /* 140px offset for fixed nav */
-
+      var scrollPos = window.scrollY + 140;
       sections.forEach(function (section) {
         var top = section.offsetTop;
         var bottom = top + section.offsetHeight;
-
         if (scrollPos >= top && scrollPos < bottom) {
           links.forEach(function (l) { l.classList.remove('active'); });
           var match = document.querySelector('.nav-links a[href="#' + section.id + '"]');
@@ -1671,32 +1663,30 @@
 
       /* Scroll to Top button visibility */
       var scrollTopBtn = document.getElementById("scrollTopBtn");
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollTopBtn.style.display = "block";
-      } else {
-        scrollTopBtn.style.display = "none";
+      if (scrollTopBtn) {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          scrollTopBtn.style.display = "block";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
       }
     });
 
     /* Scroll to top function */
-    document.getElementById("scrollTopBtn").addEventListener("click", function () {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    var scrollTopBtn = document.getElementById("scrollTopBtn");
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
-    });
+    }
 
-
-    /* ── 3. Scroll-reveal animation ─────────────────────────────
-       Elements with class .reveal fade in when they enter view   */
-
+    /* ── 3. Scroll-reveal animation ───────────────────────────── */
     var revealEls = document.querySelectorAll('.reveal');
-
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');  /* CSS handles the animation */
-          revealObserver.unobserve(entry.target); /* run once only */
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1 });
@@ -1704,144 +1694,134 @@
     revealEls.forEach(function (el) {
       revealObserver.observe(el);
     });
+    window.revealObserver = revealObserver;
 
-    /* ── 4. Project Gallery Management ─────────────────────────
-       Define images for each project and manage gallery modal     */
+    /* ── 4. Project Initialization & Filtering ───────────────── */
 
-    var projectGalleries = {
-      'IM System': [
-        'image/ims_system.png'
-      ],
-      'Smart Ride': [],
-      'Decathlon UI': [
-        'image/decathlon/1.png',
-        'image/decathlon/2.png',
-        'image/decathlon/3.png',
-        'image/decathlon/4.png',
-        'image/decathlon/5.png',
-        'image/decathlon/6.png',
-      ],
-      'Workout App': [
-        'image/workout/1.png',
-        'image/workout/2.png',
-        'image/workout/3.png',
-        'image/workout/4.png',
-        'image/workout/5.png',
-      ],
-      'Brick Bounce': [],
-      'Book Manager': []  /* No images yet */
+    let activeFilters = {
+      type: 'all',
+      app: 'all'
     };
 
-    function openGallery(projectName) {
-      var modal = document.getElementById('galleryModal');
-      var title = document.getElementById('galleryTitle');
-      var imagesContainer = document.getElementById('galleryImages');
+    async function initProjects() {
+      await loadProjects('../data/projects.json', 'allprojects');
+      renderProjects('projects-grid', null, null, '../');
 
-      title.textContent = projectName + ' — Gallery';
-      var images = projectGalleries[projectName] || [];
+      const filterButtons = document.querySelectorAll('.filter-btn');
 
-      if (images.length === 0) {
-        imagesContainer.innerHTML = '<p class="no-images">No images available for this project yet.</p>';
-      } else {
-        imagesContainer.innerHTML = images.map(function (src) {
-          return '<img src="' + src + '" class="gallery-img" alt="' + projectName + '">';
-        }).join('');
-        attachGalleryImageListeners();
-      }
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const group = btn.parentElement.id;
+          const filterValue = btn.getAttribute('data-filter');
+          const filterCategory = group === 'filter-type' ? 'type' : 'app';
 
-      modal.classList.add('active');
+          document.querySelectorAll(`#${group} .filter-btn`).forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          activeFilters[filterCategory] = filterValue;
+
+          renderProjects('projects-grid', null, (project) => {
+            const typeMatch = activeFilters.type === 'all' || project.type === activeFilters.type;
+            const appMatch = activeFilters.app === 'all' || project.appType.includes(activeFilters.app);
+            return typeMatch && appMatch;
+          }, '../');
+        });
+      });
     }
 
-    function closeGallery() {
-      var modal = document.getElementById('galleryModal');
-      modal.classList.remove('active');
-    }
+    initProjects();
 
-    /* Close modal when clicking outside content */
-    document.getElementById('galleryModal').addEventListener('click', function (e) {
-      if (e.target === this) {
-        closeGallery();
-      }
-    });
-
-    /* ── 5. Full Image Preview ─────────────────────────────────
-       Open large preview when clicking a gallery image          */
-
+    /* ── 5. Full Image Preview ───────────────────────────────── */
     var currentPreviewIndex = 0;
     var currentPreviewImages = [];
 
     function attachGalleryImageListeners() {
       var galleryImages = document.querySelectorAll('.gallery-img');
+      if (!galleryImages.length) return;
+
       galleryImages.forEach(function (img, index) {
         img.addEventListener('click', function () {
           currentPreviewIndex = index;
           currentPreviewImages = Array.from(galleryImages).map(function (i) { return i.src; });
-          openImagePreview(img.src);
+          openImagePreview_Gallery(img.src);
         });
       });
     }
 
-    function openImagePreview(imageSrc) {
+    function openImagePreview_Gallery(imageSrc) {
       var modal = document.getElementById('imagePreviewModal');
       var img = document.getElementById('previewImg');
       var prevBtn = document.getElementById('prevBtn');
       var nextBtn = document.getElementById('nextBtn');
       var counterDiv = document.getElementById('counterDiv');
 
+      if (!modal || !img) return;
+
       img.src = imageSrc;
       modal.classList.add('active');
 
-      /* Show navigation only if multiple images */
       if (currentPreviewImages.length > 1) {
-        prevBtn.style.display = currentPreviewIndex === 0 ? 'none' : 'block';
-        nextBtn.style.display = currentPreviewIndex === currentPreviewImages.length - 1 ? 'none' : 'block';
-        counterDiv.style.display = 'block';
-        counterDiv.textContent = (currentPreviewIndex + 1) + ' / ' + currentPreviewImages.length;
+        if (prevBtn) prevBtn.style.display = currentPreviewIndex === 0 ? 'none' : 'block';
+        if (nextBtn) nextBtn.style.display = currentPreviewIndex === currentPreviewImages.length - 1 ? 'none' : 'block';
+        if (counterDiv) {
+          counterDiv.style.display = 'block';
+          counterDiv.textContent = (currentPreviewIndex + 1) + ' / ' + currentPreviewImages.length;
+        }
       } else {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
-        counterDiv.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (counterDiv) counterDiv.style.display = 'none';
       }
     }
 
     function closeImagePreview() {
       var modal = document.getElementById('imagePreviewModal');
-      modal.classList.remove('active');
+      if (modal) modal.classList.remove('active');
     }
 
     function previousImage() {
       if (currentPreviewIndex > 0) {
         currentPreviewIndex--;
-        openImagePreview(currentPreviewImages[currentPreviewIndex]);
+        openImagePreview_Gallery(currentPreviewImages[currentPreviewIndex]);
       }
     }
 
     function nextImage() {
       if (currentPreviewIndex < currentPreviewImages.length - 1) {
         currentPreviewIndex++;
-        openImagePreview(currentPreviewImages[currentPreviewIndex]);
+        openImagePreview_Gallery(currentPreviewImages[currentPreviewIndex]);
       }
     }
 
-    /* Close preview modal when clicking outside */
-    document.getElementById('imagePreviewModal').addEventListener('click', function (e) {
-      if (e.target === this) {
-        closeImagePreview();
-      }
+    /* Modal Click-out & Key Logics */
+    window.addEventListener('click', function (e) {
+      const galleryModal = document.getElementById('galleryModal');
+      const previewModal = document.getElementById('projectPreviewModal');
+      const imgPreviewModal = document.getElementById('imagePreviewModal');
+
+      if (e.target === galleryModal) galleryModal.classList.remove('active');
+      if (e.target === previewModal) previewModal.classList.remove('active');
+      if (e.target === imgPreviewModal) closeImagePreview();
     });
 
-    /* Keyboard navigation for preview */
     document.addEventListener('keydown', function (e) {
-      var modal = document.getElementById('imagePreviewModal');
-      if (modal.classList.contains('active')) {
+      const modal = document.getElementById('imagePreviewModal');
+      if (modal && modal.classList.contains('active')) {
         if (e.key === 'ArrowLeft') previousImage();
         if (e.key === 'ArrowRight') nextImage();
         if (e.key === 'Escape') closeImagePreview();
       }
     });
 
+    function closeGallery() {
+      const modal = document.getElementById('galleryModal');
+      if (modal) modal.classList.remove('active');
+    }
 
-
+    function closeProjectPreview() {
+      const modal = document.getElementById('projectPreviewModal');
+      if (modal) modal.classList.remove('active');
+    }
   </script>
 
 </body>
