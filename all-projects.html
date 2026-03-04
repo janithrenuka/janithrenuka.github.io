@@ -93,7 +93,7 @@
 
     /* wrapper that centres page content */
     .container {
-      max-width: 1160px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 0 4rem;
     }
@@ -742,8 +742,32 @@
     /* responsive auto-fill grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 1.3rem;
+    }
+
+    /* Scroll to Top Button */
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 1.2rem;
+      border: none;
+      outline: none;
+      background-color: var(--accent-red);
+      color: white;
+      cursor: pointer;
+      padding: 12px 18px;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(255, 95, 46, 0.4);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    #scrollTopBtn:hover {
+      background-color: var(--accent-cyan);
+      transform: translateY(-5px);
     }
 
     .project-card {
@@ -1277,7 +1301,7 @@
   <nav id="navbar">
 
     <!-- Change "JR" to your initials -->
-    <a href="#hero" class="nav-logo">JR<span>.</span></a>
+    <a href="index.html" class="nav-logo">JR<span>.</span></a>
 
     <!-- Hamburger icon (visible on mobile only) -->
     <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
@@ -1288,289 +1312,15 @@
 
     <!-- Add or remove <li> items to change nav links -->
     <ul class="nav-links" id="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#education">Education</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
 
   </nav>
 
-
-  <!-- ============================================================
-       HERO
-       ============================================================ -->
-  <section id="hero">
-
-    <!-- Decorative background blobs (CSS only) -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-
-    <div class="hero-grid">
-
-      <!-- LEFT — intro text -->
-      <div>
-        <!-- Eyebrow label above your name -->
-        <p class="hero-eyebrow">Senior Software Engineer</p>
-
-        <!-- Your name — edit here -->
-        <h1 class="hero-name">Janith<br><span class="accent">Karunathilaka</span></h1>
-
-        <!-- Short role / location line -->
-        <p class="hero-subtitle">Full Stack Developer &nbsp;·&nbsp; Sri Lanka &#x1F1F1;&#x1F1F0;</p>
-
-        <!-- Bio paragraph — edit freely -->
-        <p class="hero-bio">
-          Passionate engineer building enterprise-grade systems with a love for emerging technologies.
-          Currently crafting mission-critical finance solutions at <strong>LB Finance</strong>,
-          always hungry to grow.
-        </p>
-
-        <!-- CTA buttons — update href values -->
-        <div class="btn-row">
-          <a href="#projects" class="btn-primary">View Projects</a>
-          <a href="#contact" class="btn-outline">Get in Touch</a>
-          <a href="resume/Janith_Karunathilaka.pdf" target="_blank" class="btn-outline"
-            style="gap: 0.4rem; display: inline-flex; align-items: center;">
-            📄 Download CV
-          </a>
-        </div>
-      </div>
-
-      <!-- RIGHT — floating skills card (hidden on mobile) -->
-      <div class="hero-card-wrap">
-        <div class="hero-card">
-
-          <p class="card-label">// tech stack</p>
-
-          <!-- Add / remove .chip spans to match your skills -->
-          <div>
-            <span class="chip">Angular</span>
-            <span class="chip">.NET Core</span>
-            <span class="chip">Flutter</span>
-            <span class="chip">TypeScript</span>
-            <span class="chip">Node.js</span>
-            <span class="chip">MSSQL</span>
-            <span class="chip">RabbitMQ</span>
-            <span class="chip">Unity</span>
-            <span class="chip">Azure</span>
-            <span class="chip">Git</span>
-          </div>
-
-          <!-- Update these numbers as you grow -->
-          <div class="card-stats">
-            <div class="stat">
-              <div class="stat-num">4+</div>
-              <div class="stat-label" style="color: var(--accent-gold);">Years</div>
-            </div>
-            <div class="stat">
-              <div class="stat-num">10+</div>
-              <div class="stat-label" style="color: var(--accent-gold);">Technologies</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       ABOUT
-       ============================================================ -->
-  <section id="about">
-    <div class="container">
-
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title">About Me</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="about-grid reveal">
-
-        <!-- LEFT — bio paragraphs. Edit the text inside <p> tags -->
-        <div class="about-text">
-          <p>
-            I'm a <strong>Senior Software Engineer</strong> at LB Finance's Center for Technology and Innovation,
-            working as a full-stack developer on <strong>ECLIPSE</strong> — an enterprise finance platform managing
-            business operations across all LB Finance branches nationwide.
-          </p>
-          <p>
-            I joined LB Finance as a <strong>Trainee Software Engineer</strong> in 2021 and grew into a lead
-            developer role, contributing core functionalities as a sub-module lead. I thrive where emerging
-            technologies meet real-world impact.
-          </p>
-          <p>
-            Outside of professional work I build projects in Flutter and Unity, and hold an
-            <strong>Azure Fundamentals Certification</strong>. I invest heavily in continuous self-study.
-          </p>
-
-          <!-- Personal skills — add/remove .tag spans -->
-          <div style="margin-top: 1.4rem;">
-            <p class="group-label" style="color: var(--accent-gold);">Personal Skills</p>
-            <div class="tag-row">
-              <span class="tag">Teamwork</span>
-              <span class="tag">Time Management</span>
-              <span class="tag">Self-Motivated</span>
-              <span class="tag">Self-Study</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT — skills by category. Add/remove .tag spans freely -->
-        <div>
-
-          <div class="skills-group">
-            <p class="group-label" style="color: var(--accent-gold);">Languages</p>
-            <div class="tag-row">
-              <span class="tag">C</span>
-              <span class="tag">C#</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">SQL</span>
-            </div>
-          </div>
-
-          <div class="skills-group">
-            <p class="group-label" style="color: var(--accent-gold);">Frameworks &amp; Tools</p>
-            <div class="tag-row">
-              <span class="tag">Angular</span>
-              <span class="tag">.NET Core</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">Flutter</span>
-              <span class="tag">RabbitMQ</span>
-              <span class="tag">MSSQL</span>
-            </div>
-          </div>
-
-          <div class="skills-group">
-            <p class="group-label" style="color: var(--accent-gold);">Dev &amp; Design Tools</p>
-            <div class="tag-row">
-              <span class="tag">Git / Fork</span>
-              <span class="tag">Android Studio</span>
-              <span class="tag">Unity</span>
-              <span class="tag">Figma</span>
-              <span class="tag">Visual Studio</span>
-              <span class="tag">HTML / CSS</span>
-            </div>
-          </div>
-
-          <div class="skills-group">
-            <p class="group-label" style="color: var(--accent-gold);">Cloud &amp; Certifications</p>
-            <div class="tag-row">
-              <span class="tag">Azure Fundamentals</span>
-              <span class="tag">TFS</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       EDUCATION & EXPERIENCE
-       ============================================================ -->
-  <section id="education">
-    <div class="container">
-
-      <div class="section-header reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title">Education &amp; Experience</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="edu-exp-grid reveal">
-
-        <!-- ── LEFT column: degrees + extras ────────────────── -->
-        <div>
-
-          <p class="group-label" style="color: var(--muted); margin-bottom: 1.6rem;">Academic</p>
-
-          <div class="timeline">
-
-            <!-- Duplicate .timeline-item for each degree -->
-
-            <div class="timeline-item">
-              <span class="badge-purp" style="margin-bottom: 0.6rem; display:inline-block;">Currently Reading</span>
-              <p class="timeline-degree">Master of Computer Science</p>
-              <p class="timeline-school">University of Colombo School of Computing</p>
-              <p class="timeline-period">2024 – Present</p>
-            </div>
-
-            <div class="timeline-item">
-              <p class="timeline-degree">BSc. in Computer Science</p>
-              <p class="timeline-school">University of Colombo School of Computing</p>
-              <p class="timeline-period">2019 – 2022</p>
-            </div>
-
-          </div>
-
-          <!-- Certifications & activities — edit text and strip colour class -->
-          <p class="group-label" style="color: var(--muted); margin: 2rem 0 1rem;">Certifications &amp; Activities</p>
-
-          <div class="highlight-strip strip-gold">&#x1F3C6; <a
-              href="https://www.credly.com/badges/800988e2-2350-4a87-958b-a334af85ccb7/linked_in" target="_blank">Azure
-              Fundamentals Certification</a></div>
-          <div class="highlight-strip strip-cyan">&#x26BE; University Baseball Team — University of Colombo</div>
-          <div class="highlight-strip strip-purp">&#x1F6E0; Makerfair Exhibition 2019 — Volunteer (US Embassy)</div>
-          <div class="highlight-strip strip-red">&#x1F4A1; IEEE MADHack Hackathon — Organizing Committee</div>
-
-        </div>
-
-        <!-- ── RIGHT column: work experience ────────────────── -->
-        <div>
-
-          <p class="group-label" style="color: var(--muted); margin-bottom: 1.6rem;">Experience</p>
-
-          <!-- Duplicate .exp-card for each employer -->
-          <div class="exp-card">
-
-            <p class="exp-company">LB Finance</p>
-            <p class="exp-location">Center for Technology &amp; Innovation, Sri Lanka</p>
-
-            <!-- Role rows — newest first -->
-            <div class="role-row">
-              <span class="role-title">&#x26A1; Senior Software Engineer</span>
-              <span class="role-date">Dec 2024 – Present</span>
-            </div>
-            <div class="role-row">
-              <span class="role-title" style="color: var(--accent-gold);">&#x25C6; Software Engineer</span>
-              <span class="role-date">Jul 2022 – Nov 2024</span>
-            </div>
-            <div class="role-row">
-              <span class="role-title" style="color: var(--muted);">&#x25C7; Trainee Software Engineer</span>
-              <span class="role-date">Oct 2021 – Jun 2022</span>
-            </div>
-
-            <p class="exp-desc">
-              Full-stack developer on <strong style="color: var(--text);">ECLIPSE</strong> — an enterprise
-              finance system managing operations across all LB Finance branches. Led core feature
-              development as sub-module lead.
-            </p>
-
-            <!-- Tech badges — add/remove .tech-tag spans -->
-            <div class="tag-row">
-              <span class="tech-tag">Angular</span>
-              <span class="tech-tag">.NET Core</span>
-              <span class="tech-tag">MSSQL</span>
-              <span class="tech-tag">RabbitMQ</span>
-              <span class="tech-tag">TFS</span>
-              <span class="tech-tag">Git / Fork</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
 
 
   <!-- ============================================================
@@ -1580,7 +1330,6 @@
     <div class="container">
 
       <div class="section-header reveal">
-        <span class="section-num">03</span>
         <h2 class="section-title">Projects</h2>
         <div class="section-line"></div>
       </div>
@@ -1711,11 +1460,6 @@
 
       </div>
 
-      <div style="display: flex; justify-content: center; margin-top: 3.5rem;" class="reveal">
-        <a href="all-projects.html" class="btn-outline" style="min-width: 200px; text-align: center;">View all
-          projects</a>
-      </div>
-
     </div>
   </section>
 
@@ -1727,7 +1471,6 @@
     <div class="container">
 
       <div class="section-header reveal">
-        <span class="section-num">04</span>
         <h2 class="section-title">Get In Touch</h2>
         <div class="section-line"></div>
       </div>
@@ -1867,6 +1610,8 @@
     </div>
   </div>
 
+  <button id="scrollTopBtn" title="Go to top">↑</button>
+
   <!-- ============================================================
        FOOTER
        ============================================================ -->
@@ -1922,6 +1667,22 @@
           var match = document.querySelector('.nav-links a[href="#' + section.id + '"]');
           if (match) match.classList.add('active');
         }
+      });
+
+      /* Scroll to Top button visibility */
+      var scrollTopBtn = document.getElementById("scrollTopBtn");
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
+
+    /* Scroll to top function */
+    document.getElementById("scrollTopBtn").addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
     });
 
