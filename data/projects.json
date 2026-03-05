@@ -1,6 +1,31 @@
 {
     "homepageprojects": [
         {
+            "id": "syncit",
+            "name": "SyncIt",
+            "type": "individual",
+            "appType": [
+                "mobile"
+            ],
+            "description": "A streamlined productivity suite featuring reminders, notes, and checklists. Designed with a focus on privacy and speed, offering a completely offline-first experience with local data persistence.",
+            "tech": [
+                "Flutter",
+                "Dart",
+                "Hive",
+                "Provider"
+            ],
+            "repo": "https://github.com/janithrenuka/syncit",
+            "website": "https://janithrenuka.github.io/syncit",
+            "images": [
+                "image/syncit/Screenshot_20260305_151137.jpeg",
+                "image/syncit/Screenshot_20260305_151146.jpeg",
+                "image/syncit/Screenshot_20260305_151155.jpeg",
+                "image/syncit/Screenshot_20260305_151201.jpeg",
+                "image/syncit/Screenshot_20260305_151208.jpeg",
+                "image/syncit/Screenshot_20260305_151216.jpeg"
+            ]
+        },
+        {
             "id": "im-system",
             "name": "IM System",
             "type": "group",
@@ -15,7 +40,7 @@
                 "MySQL"
             ],
             "repo": "https://github.com/janithrenuka/IMS_system",
-            "website": "https://janithrenuka.github.io/IMS_system",
+            "website": "",
             "images": [
                 "image/ims_system.png"
             ]
@@ -64,28 +89,6 @@
             ]
         },
         {
-            "id": "workout-app",
-            "name": "Workout App",
-            "type": "individual",
-            "appType": [
-                "mobile"
-            ],
-            "description": "Daily workout and health schedule tracker built with Flutter. Clean interface for managing personal fitness routines and monitoring health goals day-to-day.",
-            "tech": [
-                "Flutter",
-                "Dart"
-            ],
-            "repo": "https://github.com/janithrenuka/exercise_app",
-            "website": "",
-            "images": [
-                "image/workout/1.png",
-                "image/workout/2.png",
-                "image/workout/3.png",
-                "image/workout/4.png",
-                "image/workout/5.png"
-            ]
-        },
-        {
             "id": "brick-bounce",
             "name": "Brick Bounce",
             "type": "individual",
@@ -119,6 +122,31 @@
         }
     ],
     "allprojects": [
+        {
+            "id": "syncit",
+            "name": "SyncIt",
+            "type": "individual",
+            "appType": [
+                "mobile"
+            ],
+            "description": "A streamlined productivity suite featuring reminders, notes, and checklists. Designed with a focus on privacy and speed, offering a completely offline-first experience with local data persistence.",
+            "tech": [
+                "Flutter",
+                "Dart",
+                "Hive",
+                "Provider"
+            ],
+            "repo": "https://github.com/janithrenuka/syncit",
+            "website": "https://janithrenuka.github.io/syncit",
+            "images": [
+                "image/syncit/Screenshot_20260305_151137.jpeg",
+                "image/syncit/Screenshot_20260305_151146.jpeg",
+                "image/syncit/Screenshot_20260305_151155.jpeg",
+                "image/syncit/Screenshot_20260305_151201.jpeg",
+                "image/syncit/Screenshot_20260305_151208.jpeg",
+                "image/syncit/Screenshot_20260305_151216.jpeg"
+            ]
+        },
         {
             "id": "im-system",
             "name": "IM System",

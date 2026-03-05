@@ -5,6 +5,31 @@
 const PROJECTS_DATA = {
     "homepageprojects": [
         {
+            "id": "syncit",
+            "name": "SyncIt",
+            "type": "individual",
+            "appType": [
+                "mobile"
+            ],
+            "description": "A streamlined productivity suite featuring reminders, notes, and checklists. Designed with a focus on privacy and speed, offering a completely offline-first experience with local data persistence.",
+            "tech": [
+                "Flutter",
+                "Dart",
+                "Hive",
+                "Provider"
+            ],
+            "repo": "https://github.com/janithrenuka/syncit",
+            "website": "https://janithrenuka.github.io/syncit",
+            "images": [
+                "image/syncit/Screenshot_20260305_151137.jpeg",
+                "image/syncit/Screenshot_20260305_151146.jpeg",
+                "image/syncit/Screenshot_20260305_151155.jpeg",
+                "image/syncit/Screenshot_20260305_151201.jpeg",
+                "image/syncit/Screenshot_20260305_151208.jpeg",
+                "image/syncit/Screenshot_20260305_151216.jpeg"
+            ]
+        },
+        {
             "id": "im-system",
             "name": "IM System",
             "type": "group",
@@ -123,6 +148,31 @@ const PROJECTS_DATA = {
         }
     ],
     "allprojects": [
+        {
+            "id": "syncit",
+            "name": "SyncIt",
+            "type": "individual",
+            "appType": [
+                "mobile"
+            ],
+            "description": "A streamlined productivity suite featuring reminders, notes, and checklists. Designed with a focus on privacy and speed, offering a completely offline-first experience with local data persistence.",
+            "tech": [
+                "Flutter",
+                "Dart",
+                "Hive",
+                "Provider"
+            ],
+            "repo": "https://github.com/janithrenuka/syncit",
+            "website": "https://janithrenuka.github.io/syncit",
+            "images": [
+                "image/syncit/Screenshot_20260305_151137.jpeg",
+                "image/syncit/Screenshot_20260305_151146.jpeg",
+                "image/syncit/Screenshot_20260305_151155.jpeg",
+                "image/syncit/Screenshot_20260305_151201.jpeg",
+                "image/syncit/Screenshot_20260305_151208.jpeg",
+                "image/syncit/Screenshot_20260305_151216.jpeg"
+            ]
+        },
         {
             "id": "im-system",
             "name": "IM System",
