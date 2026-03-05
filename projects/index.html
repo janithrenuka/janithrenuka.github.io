@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Details — Janith Karunathilaka</title>
+    <link rel="icon" href="../image/janith_renuka.png" type="image/x-icon" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* Reuse base variables from main site */
+        :root {
+            --bg: #0a0a0f;
+            --surface: #111118;
+            --card: #16161f;
+            --border: #2a2a3a;
+            --accent-red: #ff5f2e;
+            --accent-gold: #ffcf2e;
+            --accent-cyan: #2effc3;
+            --accent-purp: #c36cff;
+            --text: #f0f0f5;
+            --muted: #888899;
+            --font-display: 'Syne', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 2rem;
+            background: rgba(10, 10, 15, 0.78);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent-red);
+        }
+
+        .back-link {
+            font-family: var(--font-mono);
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent-cyan);
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-type {
+            font-family: var(--font-mono);
+            color: var(--accent-red);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin: 0 0 1.5rem 0;
+            font-weight: 800;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(46, 255, 195, 0.07);
+            border: 1px solid rgba(46, 255, 195, 0.22);
+            color: var(--accent-cyan);
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .project-info {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+        }
+
+        .info-label {
+            font-family: var(--font-mono);
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-desc {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #b2b2c2;
+            margin-bottom: 2rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border: 1px solid var(--accent-cyan);
+            padding: 0.8rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--accent-cyan);
+            color: var(--bg);
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+
+        .error-container {
+            text-align: center;
+            padding-top: 10rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">JR<span>.</span></a>
+    </nav>
+
+    <div class="container" id="projectContainer" style="display: none;">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+
+        <header class="project-header">
+            <p class="project-type" id="projectType"></p>
+            <h1 class="project-title" id="projectName"></h1>
+            <div class="tag-row" id="projectTags"></div>
+        </header>
+
+        <div class="project-content">
+            <div class="project-info">
+                <span class="info-label">Project Overview</span>
+                <p class="project-desc" id="projectDesc"></p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#" id="projectRepo" target="_blank" class="project-link">View Repository &#x2192;</a>
+                    <a href="#" id="projectSite" target="_blank" class="project-link"
+                        style="color: var(--accent-gold); border-color: var(--accent-gold); display: none;">Visit
+                        Website &#x2192;</a>
+                </div>
+            </div>
+
+            <div id="gallerySection" style="display: none;">
+                <span class="info-label">Gallery</span>
+                <div class="project-gallery" id="projectGallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container error-container" id="errorContainer" style="display: none;">
+        <h2 style="font-family: var(--font-display); font-size: 2.5rem;">Project Not Found</h2>
+        <p style="color: var(--muted); margin-bottom: 2rem;">The project you're looking for doesn't exist or has been
+            moved.</p>
+        <a href="../index.html" class="project-link">Return Home</a>
+    </div>
+
+    <script src="../data/projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const projectId = urlParams.get('id');
+
+            if (!projectId || typeof PROJECTS_DATA === 'undefined') {
+                document.getElementById('errorContainer').style.display = 'block';
+                return;
+            }
+
+            // Search through both homepageprojects and allprojects categories
+            let project = null;
+            for (const category in PROJECTS_DATA) {
+                project = PROJECTS_DATA[category].find(p => p.id === projectId);
+                if (project) break;
+            }
+
+            if (project) {
+                renderProjectPage(project);
+            } else {
+                document.getElementById('errorContainer').style.display = 'block';
+            }
+        });
+
+        function renderProjectPage(project) {
+            document.title = `${project.name} — Project Details`;
+            document.getElementById('projectName').textContent = project.name;
+            document.getElementById('projectType').textContent = `${project.type} Project`;
+            document.getElementById('projectDesc').textContent = project.description;
+            document.getElementById('projectRepo').href = project.repo;
+
+            const siteLink = document.getElementById('projectSite');
+            if (project.website) {
+                siteLink.href = project.website;
+                siteLink.style.display = 'inline-block';
+            } else {
+                siteLink.style.display = 'none';
+            }
+
+            const tagsContainer = document.getElementById('projectTags');
+            tagsContainer.innerHTML = project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('');
+
+            const gallerySection = document.getElementById('gallerySection');
+            const galleryContainer = document.getElementById('projectGallery');
+
+            if (project.images && project.images.length > 0) {
+                gallerySection.style.display = 'block';
+                galleryContainer.innerHTML = project.images.map(img =>
+                    `<img src="../${img}" class="gallery-img" alt="${project.name}">`
+                ).join('');
+            }
+
+            document.getElementById('projectContainer').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

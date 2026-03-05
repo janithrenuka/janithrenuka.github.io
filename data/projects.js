@@ -1,4 +1,8 @@
-{
+/**
+ * Projects data as a JavaScript object.
+ * This is used as a fallback to avoid CORS errors when loading from file:// protocol.
+ */
+const PROJECTS_DATA = {
     "homepageprojects": [
         {
             "id": "im-system",
@@ -15,7 +19,7 @@
                 "MySQL"
             ],
             "repo": "https://github.com/janithrenuka/IMS_system",
-            "website": "https://janithrenuka.github.io/IMS_system",
+            "website": "",
             "images": [
                 "image/ims_system.png"
             ]
@@ -134,6 +138,7 @@
                 "MySQL"
             ],
             "repo": "https://github.com/janithrenuka/IMS_system",
+            "website": "https://janithrenuka.github.io/IMS_system",
             "images": [
                 "image/ims_system.png"
             ]
@@ -236,4 +241,4 @@
             "images": []
         }
     ]
-}
+};

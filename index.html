@@ -1727,51 +1727,7 @@
   </section>
 
 
-  <!-- ============================================================
-       GALLERY MODAL
-       ============================================================ -->
-  <div id="galleryModal" class="gallery-modal">
-    <div class="gallery-content">
-      <button class="gallery-close" onclick="closeGallery()">✕</button>
-      <h3 class="gallery-title" id="galleryTitle">Project Gallery</h3>
-      <div id="galleryImages" class="gallery-images"></div>
-    </div>
-  </div>
-
-  <!-- ============================================================
-       FULL IMAGE PREVIEW MODAL
-       ============================================================ -->
-  <div id="imagePreviewModal" class="image-preview-modal">
-    <button class="preview-close" onclick="closeImagePreview()">✕</button>
-    <div class="preview-container">
-      <img id="previewImg" class="preview-img" src="" alt="Preview" />
-      <button class="preview-nav preview-prev" onclick="previousImage()" style="display:none;"
-        id="prevBtn">&#10094;</button>
-      <button class="preview-nav preview-next" onclick="nextImage()" style="display:none;"
-        id="nextBtn">&#10095;</button>
-      <!-- ============================================================
-       PROJECT PREVIEW MODAL
-       ============================================================ -->
-      <div id="projectPreviewModal" class="gallery-modal">
-        <div class="gallery-content preview-modal-content">
-          <button class="gallery-close" onclick="closeProjectPreview()">✕</button>
-          <p id="previewType" class="project-type" style="margin-top: 0.5rem;"></p>
-          <h3 id="previewName" class="gallery-title" style="margin-bottom: 0.8rem;">Project Title</h3>
-          <div id="previewTags" class="modal-tags"></div>
-          <p id="previewDesc" class="modal-desc">Project description goes here...</p>
-          <div id="previewFooter"
-            style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); margin-top: 1rem; padding-top: 1.5rem;">
-            <a id="previewLink" href="#" target="_blank" class="project-link">View Repository &#x2192;</a>
-            <button class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.75rem;"
-              onclick="closeProjectPreview()">Close</button>
-          </div>
-        </div>
-      </div>
-
-      <button class="top" href="#hero" style="display: none;">↑</button>
-      <div class="preview-counter" style="display:none;" id="counterDiv"></div>
-    </div>
-  </div>
+  <button id="scrollTopBtn" title="Go to top">↑</button>
 
   <!-- ============================================================
        FOOTER
@@ -1790,6 +1746,7 @@
   <!-- ============================================================
        JAVASCRIPT  — only 3 simple functions
        ============================================================ -->
+  <script src="data/projects.js"></script>
   <script src="js/projects-loader.js"></script>
   <script>
     /* ── 1. Mobile hamburger menu ─────────────────────────────── */
@@ -1867,91 +1824,8 @@
       renderProjects('projects-grid');
     });
 
-    /* ── 5. Full Image Preview ───────────────────────────────── */
-    var currentPreviewIndex = 0;
-    var currentPreviewImages = [];
-
-    function attachGalleryImageListeners() {
-      var galleryImages = document.querySelectorAll('.gallery-img');
-      if (!galleryImages.length) return;
-
-      galleryImages.forEach(function (img, index) {
-        img.addEventListener('click', function () {
-          currentPreviewIndex = index;
-          currentPreviewImages = Array.from(galleryImages).map(function (i) { return i.src; });
-          openImagePreview_Gallery(img.src);
-        });
-      });
-    }
-
-    function openImagePreview_Gallery(imageSrc) {
-      var modal = document.getElementById('imagePreviewModal');
-      var img = document.getElementById('previewImg');
-      var prevBtn = document.getElementById('prevBtn');
-      var nextBtn = document.getElementById('nextBtn');
-      var counterDiv = document.getElementById('counterDiv');
-
-      if (!modal || !img) return;
-
-      img.src = imageSrc;
-      modal.classList.add('active');
-
-      if (currentPreviewImages.length > 1) {
-        if (prevBtn) prevBtn.style.display = currentPreviewIndex === 0 ? 'none' : 'block';
-        if (nextBtn) nextBtn.style.display = currentPreviewIndex === currentPreviewImages.length - 1 ? 'none' : 'block';
-        if (counterDiv) {
-          counterDiv.style.display = 'block';
-          counterDiv.textContent = (currentPreviewIndex + 1) + ' / ' + currentPreviewImages.length;
-        }
-      } else {
-        if (prevBtn) prevBtn.style.display = 'none';
-        if (nextBtn) nextBtn.style.display = 'none';
-        if (counterDiv) counterDiv.style.display = 'none';
-      }
-    }
-
-    function closeImagePreview() {
-      var modal = document.getElementById('imagePreviewModal');
-      if (modal) modal.classList.remove('active');
-    }
-
-    function previousImage() {
-      if (currentPreviewIndex > 0) {
-        currentPreviewIndex--;
-        openImagePreview_Gallery(currentPreviewImages[currentPreviewIndex]);
-      }
-    }
-
-    function nextImage() {
-      if (currentPreviewIndex < currentPreviewImages.length - 1) {
-        currentPreviewIndex++;
-        openImagePreview_Gallery(currentPreviewImages[currentPreviewIndex]);
-      }
-    }
-
-    /* Modal Click-out & Key Logics */
-    window.addEventListener('click', function (e) {
-      const galleryModal = document.getElementById('galleryModal');
-      const previewModal = document.getElementById('projectPreviewModal');
-      const imgPreviewModal = document.getElementById('imagePreviewModal');
-
-      if (e.target === galleryModal) galleryModal.classList.remove('active');
-      if (e.target === previewModal) previewModal.classList.remove('active');
-      if (e.target === imgPreviewModal) closeImagePreview();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      const modal = document.getElementById('imagePreviewModal');
-      if (modal && modal.classList.contains('active')) {
-        if (e.key === 'ArrowLeft') previousImage();
-        if (e.key === 'ArrowRight') nextImage();
-        if (e.key === 'Escape') closeImagePreview();
-      }
-    });
-
     function closeGallery() {
-      const modal = document.getElementById('galleryModal');
-      if (modal) modal.classList.remove('active');
+      // Intentionally empty: openGallery now navigates to a new page
     }
   </script>
 

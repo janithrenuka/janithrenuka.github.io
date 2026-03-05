@@ -7,6 +7,12 @@ let allProjectsData = [];
 let globalAssetPath = ''; // Stores prefix for images (e.g., '../' for subpages)
 
 async function loadProjects(dataPath = 'data/projects.json', category = 'allprojects') {
+    // Fallback: Check if PROJECTS_DATA is already defined globally
+    if (typeof PROJECTS_DATA !== 'undefined' && PROJECTS_DATA[category]) {
+        allProjectsData = PROJECTS_DATA[category];
+        return allProjectsData;
+    }
+
     try {
         const response = await fetch(dataPath);
         if (!response.ok) {
@@ -19,6 +25,13 @@ async function loadProjects(dataPath = 'data/projects.json', category = 'allproj
         return allProjectsData;
     } catch (error) {
         console.error('Error loading projects:', error);
+
+        // Final fallback in case fetch fails but PROJECTS_DATA exists (for safety)
+        if (typeof PROJECTS_DATA !== 'undefined') {
+            allProjectsData = PROJECTS_DATA[category] || (Array.isArray(PROJECTS_DATA) ? PROJECTS_DATA : []);
+            return allProjectsData;
+        }
+
         return [];
     }
 }
@@ -40,8 +53,9 @@ function createProjectCard(project, assetPath = '') {
         <div class="tag-row" style="margin-bottom: 1.1rem;">
             ${techTags}
         </div>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-            <a href="${project.repo}" target="_blank" class="project-link">View Repo &#x2192;</a>
+        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            <a href="${project.repo}" target="_blank" class="project-link" onclick="event.stopPropagation();">View Repo &#x2192;</a>
+            ${project.website ? `<a href="${project.website}" target="_blank" class="project-link" style="color: var(--accent-gold); border-color: var(--accent-gold);" onclick="event.stopPropagation();">View Site &#x2192;</a>` : ''}
             ${project.images && project.images.length > 0 ? `<span class="project-gallery-icon" onclick="event.stopPropagation(); openGallery('${project.name}')">🖼️</span>` : ''}
         </div>
     `;
@@ -50,7 +64,11 @@ function createProjectCard(project, assetPath = '') {
         if (e.target.closest('.project-link') || e.target.closest('.project-gallery-icon')) {
             return;
         }
-        openProjectPreview(project.id);
+
+        // Calculate the base path for projects
+        const projectPagePath = assetPath === '../' ? '../projects/index.html' : 'projects/index.html';
+        const url = `${projectPagePath}?id=${project.id}`;
+        window.open(url, '_blank');
     });
 
     return card;
@@ -111,24 +129,8 @@ function openGallery(projectName) {
     const project = allProjectsData.find(p => p.name === projectName);
     if (!project) return;
 
-    const modal = document.getElementById('galleryModal');
-    const title = document.getElementById('galleryTitle');
-    const imagesContainer = document.getElementById('galleryImages');
-
-    title.textContent = project.name + ' — Gallery';
-    const images = project.images || [];
-
-    if (images.length === 0) {
-        imagesContainer.innerHTML = '<p class="no-images">No images available for this project yet.</p>';
-    } else {
-        imagesContainer.innerHTML = images.map(function (src) {
-            return '<img src="' + globalAssetPath + src + '" class="gallery-img" alt="' + project.name + '">';
-        }).join('');
-
-        if (typeof attachGalleryImageListeners === 'function') {
-            attachGalleryImageListeners();
-        }
-    }
-
-    modal.classList.add('active');
+    // Navigate to project page
+    const projectPagePath = globalAssetPath === '../' ? '../projects/index.html' : 'projects/index.html';
+    const url = `${projectPagePath}?id=${project.id}`;
+    window.open(url, '_blank');
 }
