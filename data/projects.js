@@ -93,28 +93,6 @@ const PROJECTS_DATA = {
             ]
         },
         {
-            "id": "workout-app",
-            "name": "Workout App",
-            "type": "individual",
-            "appType": [
-                "mobile"
-            ],
-            "description": "Daily workout and health schedule tracker built with Flutter. Clean interface for managing personal fitness routines and monitoring health goals day-to-day.",
-            "tech": [
-                "Flutter",
-                "Dart"
-            ],
-            "repo": "https://github.com/janithrenuka/exercise_app",
-            "website": "",
-            "images": [
-                "image/workout/1.png",
-                "image/workout/2.png",
-                "image/workout/3.png",
-                "image/workout/4.png",
-                "image/workout/5.png"
-            ]
-        },
-        {
             "id": "brick-bounce",
             "name": "Brick Bounce",
             "type": "individual",
