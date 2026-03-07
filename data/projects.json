@@ -105,8 +105,8 @@
             "images": []
         },
         {
-            "id": "book-manager",
-            "name": "Book Manager",
+            "id": "book-shelve",
+            "name": "Book Shelve",
             "type": "individual",
             "appType": [
                 "mobile"
@@ -248,8 +248,8 @@
             "images": []
         },
         {
-            "id": "book-manager",
-            "name": "Book Manager",
+            "id": "book-shelve",
+            "name": "Book Shelve",
             "type": "individual",
             "appType": [
                 "mobile"

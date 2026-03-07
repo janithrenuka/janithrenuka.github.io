@@ -109,8 +109,8 @@ const PROJECTS_DATA = {
             "images": []
         },
         {
-            "id": "book-manager",
-            "name": "Book Manager",
+            "id": "book-shelve",
+            "name": "Book Shelve",
             "type": "individual",
             "appType": [
                 "mobile"
@@ -253,8 +253,8 @@ const PROJECTS_DATA = {
             "images": []
         },
         {
-            "id": "book-manager",
-            "name": "Book Manager",
+            "id": "book-shelve",
+            "name": "Book Shelve",
             "type": "individual",
             "appType": [
                 "mobile"
