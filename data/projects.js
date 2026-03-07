@@ -120,7 +120,7 @@ const PROJECTS_DATA = {
                 "Flutter",
                 "Dart"
             ],
-            "repo": "https://github.com/janithrenuka/book_list",
+            "repo": "https://github.com/janithrenuka/book_shelve",
             "website": "https://janithrenuka.github.io/book_shelve/",
             "images": []
         }
@@ -264,7 +264,7 @@ const PROJECTS_DATA = {
                 "Flutter",
                 "Dart"
             ],
-            "repo": "https://github.com/janithrenuka/book_list",
+            "repo": "https://github.com/janithrenuka/book_shelve",
             "website": "https://janithrenuka.github.io/book_shelve/",
             "images": []
         }
